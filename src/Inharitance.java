@@ -17,7 +17,7 @@ class Animal{
     }
 
     public  void  hello(){
-        System.out.println("");
+        System.out.println();
     }
 }
 
