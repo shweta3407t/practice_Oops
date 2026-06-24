@@ -1,25 +1,31 @@
 public interface Interface {
       static void main(String[] args) {
-        Cycle c=new Cycle();
+        Cycle   cycle=new Cycle();
 
-        c.accesslerate();
-        c.deacelerate();
+        cycle.accelerate();
+        cycle.deacelerate();
 
-        System.out.println(c.);
+      // static constat
+      System.out.println(Vehicle.Max_age);
+        System.out.println(Cycle.Max_age);
+
+        //static method -can access only by interface class not by implement class
+        Vehicle.info();
+
+
+                //default method (concrete method)
+                //implement class inherit this method
+                //can be access using instance of class
+           cycle.run();
+
+
     }
-}
-  interface Vehicle{
-       int Max_age=100;
-
-    void accesslerate();
-    void  deacelerate();
-
 }
 
 class  Cycle implements Vehicle {
 
     @Override
-    public void accesslerate() {
+    public void accelerate() {
         System.out.println("cycle accelerate");
     }
 
@@ -27,4 +33,6 @@ class  Cycle implements Vehicle {
     public void deacelerate() {
         System.out.println("cycle decelerate");
     }
+
+
 }
