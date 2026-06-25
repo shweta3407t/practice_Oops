@@ -7,10 +7,9 @@ public class ExampleGenerics {
 
         //generic method call
         Sport<String >  sport =new Sport<String>();
-        String name=sport.getName("cricket");
-        Integer n=sport.getNumberOfPlayers(11);
+        System.out.println(sport.getName("cricket"));
+        System.out.println(sport.getNumberOfPlayers( 11));
 
-        System.out.println(name + " : " + n);
     }
 
 
@@ -34,7 +33,7 @@ class Sport<T>{
             return  name;
     }
 
-    public     <T> T getNumberOfPlayers(T number){
+    public     <T extends  Number> T getNumberOfPlayers(T number){
         return  number;
     }
 

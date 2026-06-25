@@ -1,6 +1,6 @@
 package ExampleAbstraction;
 
-public class Example2 {
+public class ExampleGenerics {
     public static void main(String[] args) {
         Cricket<String > c=new Cricket<String>();
         System.out.println(c.getName("cricket"));
