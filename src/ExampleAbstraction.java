@@ -1,5 +1,3 @@
-package ExampleAbstraction;
-
 public class ExampleAbstraction {
     public static void main(String[] args) {
         MyBook b1=new MyBook();

@@ -25,7 +25,7 @@ public class Main {
 
         Dog d=new Dog();
         d.walk();//--override method
-        d.eat();
+//        d.eat();
         d.hello();//--override method
 
 

@@ -1,9 +1,9 @@
 public class Inharitance {
 
 }
-class Animal{
+class Animals{
 
-    public Animal(){
+    public Animals(){
         System.out.println("animal constructor called");
     }
 
@@ -21,7 +21,7 @@ class Animal{
     }
 }
 
-class  Cat extends Animal{
+class  Cat extends Animals{
 
     //eat --ovearrid
     //walk

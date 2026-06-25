@@ -1,11 +1,9 @@
-package ExampleAbstraction;
-
 public class Example2Generics {
     public static void main(String[] args) {
-    Animal<String> a=new Cat<String>();
+    Animal<String> a=new Cats<String>();
     a.walk();
 
-    Cat<String> c=new Cat<String>();
+    Cats<String> c=new Cats<String>();
     c.meow();
 
     JellyFish<String> j=new JellyFish<String>();
@@ -20,7 +18,7 @@ class Animal<T> {
 
 }
 
-class Cat<T> extends Animal<T> {
+class Cats<T> extends Animal<T> {
     void meow(){
         System.out.println("cat can meow");
     }
