@@ -1,28 +1,30 @@
 public class Example4Generics {
     public static void main(String[] args) {
-//    Vehicles v1=new Vehicles();
-//    v1.colour=" white";
-//    v1.display();
-//    v1.walkOnWheel();
-//
-//    System.out.println();
-//    Vehicles v2=new Cycles();
-//    v2.colour="pink";
-//    v2.display();
-//    v2.walkOnWheel();
-//
-//    System.out.println();
-//    Cycles c=new Cycles();
-//    c.colour="blue";
-//    c.display();
-//    c.walkOnWheel();
-//
-//    System.out.println();
-//    TeslaCar t=new TeslaCar();
-//    t.colour="pink";
-//    t.display();
-//    t.autoDrive();
-//    t.walkOnWheel();
+    Vehicles v1=new Vehicles ();
+    v1.colour=" white";
+    v1.display();
+    v1.walkOnWheel();
+
+    System.out.println();
+    Vehicles v2=new Cycles();
+    v2.colour="pink";
+    v2.display();
+    v2.walkOnWheel();
+
+    System.out.println();
+    Cycles c=new Cycles();
+    c.colour="blue";
+    c.display();
+    c.walkOnWheel();
+
+    System.out.println();
+    TeslaCar t=new TeslaCar();
+    t.colour="pink";
+    t.display();
+    t.autoDrive();
+    t.walkOnWheel();
+
+
 
 
     }
@@ -64,8 +66,13 @@ public class Example4Generics {
 //}
 
 
-
-class Vehicles{
+//with generics
+class Bag <T extends  Vehicle & Drive>{
+    public  static  void  getBox(){
+        System.out.println("bag ");
+    }
+}
+class Vehicles {
     String colour;
     void display(){
         System.out.println("displaying Vehicle colour : " + colour);

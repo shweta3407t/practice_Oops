@@ -50,9 +50,9 @@ public class example3Generics {
 }
 //generic class
 class  Box<T> {
-   private final T value ;
+   private   T value;
 
-   Box(T value){
+   Box(){
        this.value=value;
    }
 
