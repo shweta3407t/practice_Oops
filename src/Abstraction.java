@@ -1,39 +1,60 @@
 public class Abstraction {
     public static void main(String[] args) {
-          Human g=new Girl()  ;
+          HumanG g=new Girl()  ;
         g.talk();
         g.walk();
         g.sleep();
+        System.out.println(g.hasEyes);
 
     }
 }
 
-  abstract class  Human {
-    private  boolean hasEyes;
-     protected   Human(){
+  abstract class  HumanG {
+     public   boolean hasEyes;
+     protected  void Human(){
         this. hasEyes = true;
 
     }
-    public  abstract void talk();
+       abstract void talk();
 
-    public abstract void walk();
+      abstract void walk();
 
-    public void sleep(){
-        System.out.println(" zzz....");
+      void sleep(){
+        System.out.println(" human zzz....");
     }
 }
 
-class  Girl extends  Human {
+interface Human{
+    boolean hasEye=true;
+    void talk();
+    void walk();
 
+}
+
+class boy implements  Human{
 
     @Override
     public void talk() {
-        System.out.println("girl zzz...");
+
     }
 
     @Override
     public void walk() {
-        System.out.println("girl walking ...");
+
+    }
+}
+
+class  Girl extends  HumanG {
+
+
+    @Override
+    void talk() {
+
+    }
+
+    @Override
+    void walk() {
+
     }
 }
 
