@@ -1,3 +1,5 @@
+
+
 public class Inharitance {
 
 }
@@ -40,7 +42,7 @@ class  Cat extends Animals{
 
 }
 
-class  Dog extends Animal{
+class  Dog extends Animal {
 
     //eat
     //walk
