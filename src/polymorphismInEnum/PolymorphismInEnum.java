@@ -5,6 +5,22 @@ public class PolymorphismInEnum {
         Direction d=Direction.east;
         d.move();
 
+        //values()   --> iterate in enum
+        Direction[] d1=Direction.values();
+        for(Direction direction : d1){
+            System.out.println(direction);
+        }
+
+        //valueOf() -->convert string in enum constant
+        //name()
+        Direction d2=Direction .valueOf("east");
+        System.out.println(d2.name());
+
+        //ordinal()
+
+
+
+
     }
 }
 enum  Direction {
