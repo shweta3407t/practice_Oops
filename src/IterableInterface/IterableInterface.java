@@ -1,37 +1,36 @@
 package IterableInterface;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+ import java.util.*;
 
 public class IterableInterface {
     public static void main(String[] args) {
-//       List<Integer> list=new LinkedList<>();
-//        list.add(1);
-//        list.add(3);
-//        list.add(2);
-//        list.add(5);
-//        list.add(4);
-//        list.add(8);
-//        for(int i=0 ; i<list.size() ; i++){
-//            System.out.print( list.get(i) ) ;
-//            System.out.print("->");
-//        }
-//        System.out.print("null");
+       List<Integer> list=new LinkedList<>();
+        list.add(1);
+        list.add(3);
+        list.add(2);
+        list.add(5);
+        list.add(4);
+        list.add(8);
+        for(int i=0 ; i<list.size() ; i++){
+            System.out.print( list.get(i) ) ;
+            System.out.print("->");
+        }
+        System.out.print("null");
 
-//        //using iterable interface
-//        Collection<Integer> l=new Stack<>();
-//        l.add(11);
-//        l.add(22);
-//        l.add(33);
-//        l.add(44);
-//        l.add(55);
-//        Iterator<Integer> iterator=l.iterator();
-//        System.out.println();
-//        while(iterator.hasNext()){
-//            System.out.print(iterator.next() );
-//            System.out.print("->");
-//         }
-//        System.out.print("null");
+        //using iterable interface
+        Collection<Integer> l=new Stack<>();
+        l.add(11);
+        l.add(22);
+        l.add(33);
+        l.add(44);
+        l.add(55);
+        Iterator<Integer> iterator=l.iterator();
+        System.out.println();
+        while(iterator.hasNext()){
+            System.out.print(iterator.next() );
+            System.out.print("->");
+         }
+        System.out.print("null");
 
 
         //example 1
