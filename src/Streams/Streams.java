@@ -66,8 +66,9 @@ public class Streams {
                  .map(x -> x+1)
                 .collect(Collectors.toList());
         System.out.println(l);
-        ////set
-        ////map
+        //set
+
+        //map
         List<String> list5=new ArrayList<>(List.of("AA" ,"BBB" ,"CCCC")) ;
 
         Map<Integer ,String> map=list5.stream()
@@ -77,12 +78,40 @@ public class Streams {
                 ));
         System.out.println(map);
 
- //       //Grouping by()
-        List<String> list6=new ArrayList<>(List.of("AA" ,"BBB" ,"CCCC" ,"SS" ,"EEE" ,"RRRR" ,"QQQQQ")) ;
+      //Grouping by()
 
-        Map<Integer ,List<String>> mp=list6.stream()
+        Map<Integer ,List<String>> mp=list5.stream()
                 .collect(Collectors.groupingBy(x -> x.length()));
         System.out.println(mp);
+
+
+        //Grouping by() with maping()
+
+        Map<Integer ,List<String>> map1=list5.stream()
+                .collect(Collectors.groupingBy(
+                        x -> x.length(),
+                            Collectors.mapping(
+                               x -> x.toLowerCase(),Collectors.toList()))
+                );
+        System.out.println(map1);
+
+
+        //joining()
+        String join=list5.stream().collect(Collectors.joining("-"));
+        System.out.println(join);
+
+
+
+
+
+      //partitioningBy()--(boolean ,List)
+        List<Integer> list8=new ArrayList<>(List.of(11,22,33,44)) ;
+        Map<Boolean , List<Integer> > map2=list8.stream().collect(Collectors.partitioningBy(x -> x%2 != 0));
+        System.out.println(map2);
+
+        //
+
+
 
 
 
@@ -153,9 +182,9 @@ public class Streams {
         list.add(new Employee(5 ,"ram"));
         list.add(new Employee(6,"raj"));
 
-        Stream<Employee> streaml=list.stream();
-//        s.filter(x -> x<5 )
-//                .forEach(System.out::println);
+//         list.stream()
+//                 .filter(x -> x>>2)
+//                 .forEach(System.out::println);
     }
 }
 
