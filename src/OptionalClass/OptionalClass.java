@@ -1,6 +1,9 @@
 package OptionalClass;
 
 
+import javax.crypto.spec.OAEPParameterSpec;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 //public class  OptionalClass {
@@ -71,31 +74,77 @@ import java.util.Optional;
 
 
 
-// ##Multidimensional
-public  class OptionalClass {
-    static void main() {
-        Optional<User> user= getAddress();
+//// ##Multidimensional
+//public  class OptionalClass {
+//    static void main() {
+//        Optional<User> user= getAddress();
+//
+// //        Optional<Optional<Addesss>> addesss=user.map(x-> x.address); //same
+//        user.flatMap(x -> x.address)   //same
+//                .map(y -> y.city)
+//                .ifPresent(System.out :: println);
+//
+//        //filter()
+//        Optional<String> string=Optional.of("Shweta" );
+//        Optional<String> result =string.filter(x -> x.length() > 10);
+//        System.out.println(result.orElse("Empty"));
+//
+//        //same
+//        string.map(x ->x.length())
+//                .filter(len -> len > 4)
+//                .ifPresent(System.out:: println);
+//
+//    }
+//    public  static  Optional<User> getAddress(){
+//        Addesss a=new Addesss();
+//        a.city="Mumbai";
+//
+//        User u=new User();
+//        u.address=Optional.of(a);
+//        return Optional.of(u);
+//    }
+//
+//}
+//class User{
+//    public  Optional<Addesss> address;
+//}
+//class Addesss{
+//    public  String city;
+//}
 
- //        Optional<Optional<Addesss>> addesss=user.map(x-> x.address); //same
-        user.flatMap(x -> x.address)   //same
-                .map(y -> y.city)
-                .ifPresent(System.out :: println);
+
+// ## Stream and map together
+public  class OptionalClass {
+      static void main() {
+        List<User> user  =new ArrayList<>();
+        List<Email> email=user.stream()
+                .map(x -> x.getEmail())
+                .filter(x -> x.isPresent())
+                .map(x -> x.get())
+                .toList();
+
     }
-    public  static  Optional<User> getAddress(){
-        Addesss a=new Addesss();
-        a.city="Mumbai";
+    public  static Optional<User>  getEmail(){
+        Email e=new Email();
+        e.email="shweta@gmail.com";
 
         User u=new User();
-        u.address=Optional.of(a);
-        return Optional.of(u);
-    }
+        u.email=Optional.of(e);
 
+        return Optional.of(u);
+
+    }
 }
 class User{
-    public  Optional<Addesss> address;
+   public Optional<Email > email;
+
+   public Optional<Email> getEmail(){
+       return  email;
+   }
+
 }
-class Addesss{
-    public  String city;
+class Email{
+    String email;
 }
 
 
