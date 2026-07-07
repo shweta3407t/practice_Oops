@@ -24,9 +24,6 @@ public class Sets {
 
 
 
-        //constructor of treeMap/LinkedTreeMap -->
-        Map<Integer,String> t1=new TreeMap<>();
-        Map<Integer , String> t2=new TreeMap<>(Map.of(  1,"shweta",2,"payal" ));
 
 
 
