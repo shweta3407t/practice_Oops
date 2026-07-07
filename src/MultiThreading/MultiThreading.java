@@ -177,12 +177,6 @@ public class MultiThreading {
         t19.join();
         System.out.println(c.count);
         //Race condition
-
-
-
-
-
-
     }
 }
 
@@ -203,7 +197,7 @@ class MyRunnable implements  Runnable{
 
 class Counter{
     public int count=0;
-    synchronized  void  increment(){//here this is  critical section
+       void  increment(){//here this is  critical section
         count++;  //here this is shared resource
     }
 }
