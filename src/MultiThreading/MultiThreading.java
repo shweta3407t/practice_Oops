@@ -1,5 +1,7 @@
 package MultiThreading;
 
+import java.util.stream.Collector;
+
 public class MultiThreading {
     static void main() throws InterruptedException {
 //        MyThread t1=new MyThread();
@@ -61,99 +63,122 @@ public class MultiThreading {
 //        System.out.println(t7.getState());
 
 
-//        //methods in Threads
-        System.out.println("main thread start");
-        Thread t8=new Thread( () ->  {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {}
-            System.out.println("thread 8 starts");
-        });
-        t8.start();
+////        //methods in Threads
+//        System.out.println("main thread start");
+//        Thread t8=new Thread( () ->  {
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {}
+//            System.out.println("thread 8 starts");
+//        });
+//        t8.start();
+//
+//        t8.join(1000);//let the t8 thread first complete its execution
+//        System.out.println("main thread ends");
+//
+//
+//        Thread t9=new Thread( () -> {
+//             for(int i = 1 ; i <= 10 ; i++){
+//                System.out.println(i);
+//            }
+//              Thread.yield();//give chance to another thread with same priority
+//        });
+//        t9.start();
+//
+//        Thread t10=new Thread( () -> {
+//            for(int i = 101 ; i <= 110 ; i++){
+//                System.out.println(i);
+//            }
+//         });
+//        t10.start();
+//
+//        Thread t11=new Thread(() -> {
+//            while( ! Thread.currentThread().isInterrupted()){
+//                System.out.println( " RUNNING");
+//
+//            }
+//        });
+//        t11.start();
+//        Thread.sleep(100);//itne time me jitna print hona hoga utne print hoga
+//        t11.interrupt();//send signal to t11 thai it should stop doing whatever its doing
+//
+//        //isIntrupted() ---> return interrupt flag value
+//        //interrupted() --->return interrupt flag value   also set it back to false(default)value  (reset)
+//
+//
+//
+//        Thread t12=new Thread(() -> {
+//            try {
+//                 Thread.sleep(2000);
+//             } catch (InterruptedException e) {}
+//        });
+//        System.out.println(t12.isAlive()); // After start and before terminate Thread ---> Alive
+//        t12.start();
+//        System.out.println(t12.isAlive());
+//        Thread.sleep(3000);
+//        System.out.println(t12.isAlive());
+//
+//
+//
+//        Thread t13=new Thread(() -> {
+//            System.out.println(Thread.currentThread().getName());
+//        });
+//        t13.setName("Worker-1");  //set name to thread
+//        t13.start();
+//        //currentThread()-->give reference of thread
+//
+//
+//
+//        Thread t14=new Thread(() -> System.out.println("Thread 14 start"));
+//         t14.setPriority(1);
+//
+//        Thread t15=new Thread(() -> System.out.println( "Thread 15 start"));
+//        t15.setPriority(10);
+//
+//        Thread t16=new Thread(() -> System.out.println( "Thread 16 start"));
+//        t16.setPriority(5);
+//
+//        t14.start();
+//        t15.start();
+//         t16.start();
+//        //Thread priority
+//
+//
+//
+//        Thread t17=new Thread( () -> {
+//            while (true){
+//                System.out.println("RUNNING");
+//            }
+//        });
+//        t17.setDaemon(true);//stop imediately once main is completed
+//        t17.start();
+//        Thread.sleep(1000);
+//        //Demon Threads --> Background running Threads
+//        // Threads -->demon Threads ,user Threads
 
-        t8.join(1000);//let the t8 thread first complete its execution
-        System.out.println("main thread ends");
 
-
-        Thread t9=new Thread( () -> {
-             for(int i = 1 ; i <= 10 ; i++){
-                System.out.println(i);
+        //problems
+        Counter c=new Counter();
+        Thread t18=new Thread(() ->   {
+            for(int i = 1 ; i<= 10000  ; i ++){
+                c.increment();
             }
-              Thread.yield();//give chance to another thread with same priority
         });
-        t9.start();
 
-        Thread t10=new Thread( () -> {
-            for(int i = 101 ; i <= 110 ; i++){
-                System.out.println(i);
-            }
-         });
-        t10.start();
-
-        Thread t11=new Thread(() -> {
-            while( ! Thread.currentThread().isInterrupted()){
-                System.out.println( " RUNNING");
-
+        Thread t19=new Thread(() ->   {
+            for(int i = 1 ; i<= 10000  ; i ++){
+                c.increment();
             }
         });
-        t11.start();
-        Thread.sleep(100);//itne time me jitna print hona hoga utne print hoga
-        t11.interrupt();//send signal to t11 thai it should stop doing whatever its doing
+        t18.start();
+        t19.start();
 
-        //isIntrupted() ---> return interrupt flag value
-        //interrupted() --->return interrupt flag value   also set it back to false(default)value  (reset)
-
-
-
-        Thread t12=new Thread(() -> {
-            try {
-                 Thread.sleep(2000);
-             } catch (InterruptedException e) {}
-        });
-        System.out.println(t12.isAlive()); // After start and before terminate Thread ---> Alive
-        t12.start();
-        System.out.println(t12.isAlive());
-        Thread.sleep(3000);
-        System.out.println(t12.isAlive());
+        t18.join();
+        t19.join();
+        System.out.println(c.count);
+        //Race condition
 
 
-
-        Thread t13=new Thread(() -> {
-            System.out.println(Thread.currentThread().getName());
-        });
-        t13.setName("Worker-1");  //set name to thread
-        t13.start();
-        //currentThread()-->give reference of thread
-
-
-
-        Thread t14=new Thread(() -> System.out.println("Thread 14 start"));
-         t14.setPriority(1);
-
-        Thread t15=new Thread(() -> System.out.println( "Thread 15 start"));
-        t15.setPriority(10);
-
-        Thread t16=new Thread(() -> System.out.println( "Thread 16 start"));
-        t16.setPriority(5);
-
-        t14.start();
-        t15.start();
-         t16.start();
-        //Thread priority
-
-
-
-        Thread t17=new Thread( () -> {
-            while (true){
-                System.out.println("RUNNING");
-            }
-        });
-        t17.setDaemon(true);//stop imediately once main is completed
-        t17.start();
-        Thread.sleep(1000);
-
-        //Demon Threads --> Background running Threads
-        // Threads -->demon Threads ,user Threads
 
 
 
@@ -175,3 +200,12 @@ class MyRunnable implements  Runnable{
 
     }
 }
+
+class Counter{
+    public int count=0;
+    synchronized  void  increment(){//here this is  critical section
+        count++;  //here this is shared resource
+    }
+}
+
+
