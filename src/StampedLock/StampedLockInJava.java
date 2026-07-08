@@ -1,5 +1,6 @@
 package StampedLock;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.StampedLock;
 
 public class StampedLockInJava {
@@ -18,20 +19,47 @@ public class StampedLockInJava {
 
         r1.start();
         r2.start();
+
+        //semaphore
+
+        SemaphoreResource sr=new SemaphoreResource();
+
+        Thread t5=new Thread( () -> sr.m1());
+        t5.start();
+        Thread t6=new Thread(() -> sr.m1());
+        t6.start();
+        Thread t7=new Thread(() -> sr.m1());
+        t7.start();
+        Thread t8=new Thread(() -> sr.m1());
+        t8.start();
+
+
+
     }
+}
+
+class SemaphoreResource{
+    Semaphore s=new Semaphore(3 );
+
+    void  m1()   {
+        try {
+            s.acquire();
+        } catch (InterruptedException e) {}
+        System.out.println(Thread.currentThread().getName()+" : Enter m1  ");
+        s.release();
+    }
+
 }
 
 class SharedResource{
     private  int value=11;
     StampedLock lock=new StampedLock();
 
-
-
      void read() {
         Long stamp=lock.tryOptimisticRead();
         int currentValue=value;
 
-        if(lock.validate(stamp) == false){
+         if(lock.validate(stamp) == false){
             //fallover logic
             //tryOptimistic read
 
@@ -46,7 +74,7 @@ class SharedResource{
             }finally {
                 lock.unlockRead(stamp);
             }
-        }
+         }
          System.out.println(Thread .currentThread().getName() + "  Reads value as : " +currentValue);
     }
 
